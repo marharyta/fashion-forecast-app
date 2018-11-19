@@ -23,12 +23,15 @@ export function receiveWeather(data) {
     isFetching: false,
     payload: {
       weather: {
-        descriotion: data.weather[0].description,
+        description: data.weather[0].description,
         weatherLocation: {
-          coords: data.coord,
-          city: name,
           countryCode: data.sys.country,
-          sunrice: data.sys.sunrise,
+          city: name,
+          geoCoords: {
+            lon: data.coord.lon,
+            lat: data.coord.lat
+          },
+          sunrise: data.sys.sunrise,
           sunset: data.sys.sunset
         },
         temperature: {
